@@ -12,8 +12,4 @@ public class ForumApplication {
 		SpringApplication.run(ForumApplication.class, args);
 	}
 
-	@GetMapping("/")
-	public String hello() {
-		return "hello world!";
-	}
 }
