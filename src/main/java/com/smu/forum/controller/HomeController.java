@@ -1,12 +1,18 @@
 package com.smu.forum.controller;
 
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
 
-@RestController
+@Controller
 public class HomeController {
-    @RequestMapping("/")
+    @RequestMapping("/home")
     public String hello() {
-        return "hello cs7346!";
+        return "home";
+    }
+
+    @RequestMapping("/index")
+    public String index(Model model) {
+        return "index";
     }
 }

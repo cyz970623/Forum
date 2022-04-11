@@ -5,20 +5,21 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="96909c54-c151-4e91-9f33-990baa15d440" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/.gcloudignore" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/smu/forum/controller/HomeController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/application-mysql.properties" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/mysql/data.sql" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/mysql/schema.sql" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/mysql/user.sql" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/service-account-key/key.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/smu/forum/controller/LoginController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/application.yml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/templates/index.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/templates/login.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Forum.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/forum.iml" beforeDir="false" afterPath="$PROJECT_DIR$/forum.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/smu/forum/ForumApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/smu/forum/ForumApplication.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/smu/forum/controller/HomeController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/smu/forum/controller/HomeController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/application.properties" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/application.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/forum-0.0.1-SNAPSHOT.jar.original" beforeDir="false" afterPath="$PROJECT_DIR$/target/forum-0.0.1-SNAPSHOT.jar.original" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/templates/application.yml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst" beforeDir="false" afterPath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -28,6 +29,7 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
+        <option value="HTML File" />
         <option value="Class" />
       </list>
     </option>
@@ -45,7 +47,7 @@
     <option name="myId2Visible">
       <map>
         <entry key="com.haulmont.jpb.jpaPalette" value="false" />
-        <entry key="com.haulmont.jpb.jpaStructure" value="true" />
+        <entry key="com.haulmont.jpb.jpaStructure" value="false" />
       </map>
     </option>
   </component>
@@ -75,16 +77,22 @@
     <property name="ACTIVE_CLOUD_PROJECT_NUMBER" value="725280961538" />
     <property name="ASKED_ADD_EXTERNAL_FILES" value="true" />
     <property name="ASKED_SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
+    <property name="DefaultHtmlFileTemplate" value="HTML File" />
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
-    <property name="com.google.cloudcode.ide_session_index" value="20220410_0008" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/src/main/resources/service-account-key" />
+    <property name="com.google.cloudcode.ide_session_index" value="20220410_0016" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/src/main/resources/static" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/main/resources/static" />
+      <recent name="$PROJECT_DIR$/src/main/resources/templates" />
       <recent name="$PROJECT_DIR$/src/main/resources/service-account-key" />
       <recent name="$PROJECT_DIR$/src/main/resources/mysql" />
       <recent name="$PROJECT_DIR$/src/main/resources" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/main/resources/templates" />
     </key>
   </component>
   <component name="RunManager">
