@@ -1,15 +1,35 @@
---DROP TABLE IF EXISTS users;
-CREATE TABLE IF NOT EXISTS users(
-  id INT(4) UNSIGNED NOT NULL AUTO_INCREMENT PRIMARY KEY,
-  first_name VARCHAR(30),
-  last_name VARCHAR(30),
-  email_address VARCHAR(255),
-  INDEX(last_name)
+drop table if exists accounts;
+drop table if exists users;
+drop table if exists questions;
+drop table if exists answers;
+
+create table accounts(
+  id int not null auto_increment primary key,
+  user_name VARCHAR(30),
+  pass_word VARCHAR(30)
 ) engine=InnoDB;
 
-CREATE TABLE IF NOT EXISTS accounts(
-  id INT(4) UNSIGNED NOT NULL AUTO_INCREMENT PRIMARY KEY,
-  user_name VARCHAR(30),
-  pass_word VARCHAR(30),
+create table users(
+  account_id int not null,
+  email_address VARCHAR(30)
+) engine=InnoDB;
+
+create table questions(
+  id int auto_increment primary key,
+  creator_id int not null,
+  title VARCHAR(30),
+  description VARCHAR(255),
+  create_time date,
+  answer_count int default 0,
+  view_count int default 0,
+  like_count int default 0
+) engine=InnoDB;
+
+create table answers(
+  question_id int not null,
+  answerer_id int not null,
+  description text,
+  answer_time date,
+  like_count int default 0
 ) engine=InnoDB;
 
