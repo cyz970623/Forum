@@ -1,10 +1,15 @@
+--DROP TABLE IF EXISTS users;
 CREATE TABLE IF NOT EXISTS users(
   id INT(4) UNSIGNED NOT NULL AUTO_INCREMENT PRIMARY KEY,
   first_name VARCHAR(30),
   last_name VARCHAR(30),
-  address VARCHAR(255),
-  city VARCHAR(80),
-  telephone VARCHAR(20),
+  email_address VARCHAR(255),
   INDEX(last_name)
+) engine=InnoDB;
+
+CREATE TABLE IF NOT EXISTS accounts(
+  id INT(4) UNSIGNED NOT NULL AUTO_INCREMENT PRIMARY KEY,
+  user_name VARCHAR(30),
+  pass_word VARCHAR(30),
 ) engine=InnoDB;
 
