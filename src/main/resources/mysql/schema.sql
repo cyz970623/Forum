@@ -3,18 +3,18 @@ drop table if exists users;
 drop table if exists questions;
 drop table if exists answers;
 
-create table accounts(
+create table if not exists accounts(
   id int not null auto_increment primary key,
   user_name VARCHAR(30),
   pass_word VARCHAR(30)
 ) engine=InnoDB;
 
-create table users(
+create table if not exists users(
   account_id int not null,
   email_address VARCHAR(30)
 ) engine=InnoDB;
 
-create table questions(
+create table if not exists questions(
   id int auto_increment primary key,
   creator_id int not null,
   title VARCHAR(30),
@@ -25,7 +25,7 @@ create table questions(
   like_count int default 0
 ) engine=InnoDB;
 
-create table answers(
+create table if not exists answers(
   question_id int not null,
   answerer_id int not null,
   description text,

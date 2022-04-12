@@ -1,0 +1,31 @@
+<!DOCTYPE HTML>
+<head>
+    <meta charset="UTF-8">
+    <title>Home</title>
+</head>
+<html xmlns:th="https://www.thymeleaf.org">
+<body>
+Welcome to Forum!<br/>
+<table id="questions" class="table table-striped">
+    <thead>
+    <tr>
+        <th style="width: 150px;">Title</th>
+        <th style="width: 200px;">Description</th>
+        <th>Time</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="question : ${questions}">
+<!--        <td th:text=${question.title}><a href='../question_detail'></a></td>-->
+        <td><a href='../question_detail' th:text=${question.title}></a></td>
+        <td th:text=${question.description}/>
+        <td th:text=${question.create_time}/>
+    </tr>
+    </tbody>
+</table>
+<button value="question_detail" onclick="javascript:window.location.href='../question_detail'">Question Detail</button><br/>
+<button value="create_question" onclick="javascript:window.location.href='../create_question'">Create Question</button><br/>
+<button value="sign_in" onclick="javascript:window.location.href='../login'">Sign In</button>
+<button value="sign_up" onclick="javascript:window.location.href='../register'">Sign Up</button>
+</body>
+</html>
