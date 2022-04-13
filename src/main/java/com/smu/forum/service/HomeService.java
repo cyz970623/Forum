@@ -17,7 +17,7 @@ public class HomeService {
     }
 
     public List<Map<String, Object>> getQuestions() {
-        return this.jdbcTemplate.queryForList("SELECT * FROM questions");
+        return this.jdbcTemplate.queryForList("select * from questions order by id desc");
     }
 
 }

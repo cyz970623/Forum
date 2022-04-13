@@ -31,7 +31,7 @@ public class CreateQuestionController {
         SimpleDateFormat dateFormat = new SimpleDateFormat("YYYY-MM-dd");
 
         Question question = new Question();
-        question.setCreatorId(1);
+        question.setCreatorId(1);//TODO
         question.setTitle(title);
         question.setDescription(description);
         question.setCreateTime(dateFormat.format(date));

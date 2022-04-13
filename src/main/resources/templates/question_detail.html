@@ -1,13 +1,33 @@
 <!DOCTYPE html>
-<html lang="en">
+<html xmlns:th="https://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <title>Question Detail</title>
 </head>
 <body>
-Title：<br/>
-Description：<br/>
-<button value="create_answer" onclick="javascript:window.location.href='../create_answer'">Answer</button>
-<button value="back_to_home" onclick="javascript:window.location.href='../home'">Back</button>
+<button value="back_to_home" onclick="javascript:window.location.href='../home'">Back</button><br/>
+Title：<span th:text="${question.title}"></span><br/>
+Description：<span th:text="${question.description}"></span><br/>
+<table id="questions" class="table table-striped">
+<thead>
+<tr>
+    <th style="width: 10px;">Answerer</th>
+    <th style="width: 2000px;">Description</th>
+    <th style="width: 200px;">Date</th>
+</tr>
+</thead>
+<tbody>
+<tr th:each="answer : ${answers}">
+    <td th:text=${answer.answerer_id}/>
+    <td th:text=${answer.description}/>
+    <td th:text=${answer.answer_time}/>
+</tr>
+</tbody>
+</table>
+<form th:action="@{/submit_answer}" method="get">
+    Answer：<input type="text" th:id="description" th:name="description">
+    <input type="hidden" th:value="${question.id}" th:id="questionId" th:name="questionId"/>
+    <button type="submit" >Answer</button>
+</form>
 </body>
 </html>
