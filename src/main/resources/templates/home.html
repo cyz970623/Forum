@@ -2,29 +2,43 @@
 <head>
     <meta charset="UTF-8">
     <title>Home</title>
+    <link rel="stylesheet" type="text/css" href="http://cdn.datatables.net/1.10.15/css/jquery.dataTables.css">
+    <script type="text/javascript" charset="utf8" src="http://code.jquery.com/jquery-1.10.2.min.js"></script>
+    <script type="text/javascript" charset="utf8" src="http://cdn.datatables.net/1.10.15/js/jquery.dataTables.js"></script>
 </head>
 <html xmlns:th="https://www.thymeleaf.org">
 <body>
 Welcome to Forum!
 <button value="sign_in" onclick="javascript:window.location.href='../login'">Sign In</button>
 <button value="sign_up" onclick="javascript:window.location.href='../register'">Sign Up</button>
-<table id="questions" class="table table-striped">
-    <thead>
-    <tr>
-        <th style="width: 200px;">Title</th>
-        <th style="width: 2000px;">Description</th>
-        <th style="width: 200px;">Date</th>
-    </tr>
-    </thead>
-    <tbody>
-    <tr th:each="question : ${questions}">
-<!--        <td><a href='../question_detail/{${question.id}}' th:text=${question.title}></a></td>-->
-        <td><a th:href="@{'/question_detail/'+ ${question.id}}" th:text=${question.title}></a></td>
-        <td th:text=${question.description}/>
-        <td th:text=${question.create_time}/>
-    </tr>
-    </tbody>
+<table class="display" id="questions">
+        <thead>
+        <tr>
+            <th style="width: 200px;">Title</th>
+            <th style="width: 2000px;">Description</th>
+            <th style="width: 200px;">Date</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="question : ${questions}">
+            <td th:text=${question.title}/>
+            <td><a th:href="@{'/question_detail/'+ ${question.id}}" th:text=${question.description}></a></td>
+            <td th:text=${question.create_time}/>
+        </tr>
+        </tbody>
 </table>
+<script type="text/javascript">
+$(document).ready(function(){
+    $("#questions").DataTable({
+        "oLanguage": {
+            "sZeroRecords" : "No Questions",
+            "sInfoEmpty" : " ",
+            "sInfo" : "Showing _START_ to  _END_ of _TOTAL_ Questions",
+            "sSearch" : "Search"
+        }
+    });
+});
+</script>
 <button value="create_question" onclick="javascript:window.location.href='../create_question'">Create Question</button><br/>
 </body>
 </html>

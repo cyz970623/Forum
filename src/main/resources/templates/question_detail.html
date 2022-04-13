@@ -3,27 +3,42 @@
 <head>
     <meta charset="UTF-8">
     <title>Question Detail</title>
+    <link rel="stylesheet" type="text/css" href="http://cdn.datatables.net/1.10.15/css/jquery.dataTables.css">
+    <script type="text/javascript" charset="utf8" src="http://code.jquery.com/jquery-1.10.2.min.js"></script>
+    <script type="text/javascript" charset="utf8" src="http://cdn.datatables.net/1.10.15/js/jquery.dataTables.js"></script>
 </head>
 <body>
 <button value="back_to_home" onclick="javascript:window.location.href='../home'">Back</button><br/>
 Title：<span th:text="${question.title}"></span><br/>
 Description：<span th:text="${question.description}"></span><br/>
-<table id="questions" class="table table-striped">
-<thead>
-<tr>
-    <th style="width: 10px;">Answerer</th>
-    <th style="width: 2000px;">Description</th>
-    <th style="width: 200px;">Date</th>
-</tr>
-</thead>
-<tbody>
-<tr th:each="answer : ${answers}">
-    <td th:text=${answer.answerer_id}/>
-    <td th:text=${answer.description}/>
-    <td th:text=${answer.answer_time}/>
-</tr>
-</tbody>
+<table class="display" id="answers">
+    <thead>
+    <tr>
+        <th style="width: 10px;">Answerer</th>
+        <th style="width: 2000px;">Description</th>
+        <th style="width: 200px;">Date</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="answer : ${answers}">
+        <td th:text=${answer.answerer_id}/>
+        <td th:text=${answer.description}/>
+        <td th:text=${answer.answer_time}/>
+    </tr>
+    </tbody>
 </table>
+<script type="text/javascript">
+$(document).ready(function(){
+    $("#answers").DataTable({
+        "oLanguage": {
+            "sZeroRecords" : "No Answers",
+            "sInfoEmpty" : " ",
+            "sInfo" : "Showing _START_ to  _END_ of _TOTAL_ Answers",
+            "sSearch" : "Search"
+        }
+    });
+});
+</script>
 <form th:action="@{/submit_answer}" method="get">
     Answer：<input type="text" th:id="description" th:name="description">
     <input type="hidden" th:value="${question.id}" th:id="questionId" th:name="questionId"/>
