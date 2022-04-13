@@ -1,13 +1,17 @@
 <!DOCTYPE html>
-<html lang="en">
+<html xmlns:th="https://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <title>Create Question</title>
 </head>
 <body>
-Raise Your Question<br/>
-Title：<input type="text"><br/>
-Description：<input type="text"><br/>
-<button value="submit_question" onclick="javascript:window.location.href='../home'">Submit</button>
+<div>
+    <form th:action="@{/submit_question}" method="get">
+        Raise Your Question<br/>
+        Title：<input type="text" th:id="title" th:name="title"><br/>
+        Description：<input type="text" th:id="description" th:name="description"><br/>
+        <button type="submit">Submit</button>
+    </form>
+</div>
 </body>
 </html>

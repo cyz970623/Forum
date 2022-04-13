@@ -12,12 +12,6 @@ import java.util.Map;
 @Controller
 public class HomeController {
 
-//    private final QuestionRepository questionRepository;
-//
-//    public HomeController(QuestionRepository questionRepository) {
-//        this.questionRepository = questionRepository;
-//    }
-
     @Autowired
     private HomeService homeService;
 
