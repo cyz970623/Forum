@@ -1,5 +1,6 @@
 package com.smu.forum.controller;
 
+import com.smu.forum.domain.Property;
 import com.smu.forum.domain.Question;
 import com.smu.forum.service.HomeService;
 import com.smu.forum.service.QuestionService;
@@ -18,6 +19,9 @@ public class CreateQuestionController {
     @Autowired
     private QuestionService questionService;
 
+    @Autowired
+    private Property property;
+
     @RequestMapping(value = "/create_question")
     public String createQuestion(Model model) {
         return "create_question";
@@ -31,7 +35,7 @@ public class CreateQuestionController {
         SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
 
         Question question = new Question();
-        question.setCreatorId(1);//TODO
+        question.setCreatorId(property.getId());
         question.setTitle(title);
         question.setDescription(description);
         question.setCreateTime(dateFormat.format(date));

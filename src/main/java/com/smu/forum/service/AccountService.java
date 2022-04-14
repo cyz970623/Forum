@@ -24,7 +24,7 @@ public class AccountService {
 
     public Account getAccount(String username) {
         return this.jdbcTemplate.queryForObject(
-        "select password from accounts where username = '" + username + "'",
+        "select * from accounts where username = '" + username + "'",
             new BeanPropertyRowMapper<Account>(Account.class));
     }
 }

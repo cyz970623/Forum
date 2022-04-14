@@ -40,16 +40,20 @@ Welcome to Forum!
         </tr>
         </tbody>
 </table>
-<script type="text/javascript">
+<script type="text/javascript" th:inline="none">
 $(document).ready(function(){
     $("#questions").DataTable({
+        "order" : [[0, "desc"]],
         "aLengthMenu" : [5, 10, 15],
         "oLanguage": {
             "sZeroRecords" : "No Results",
             "sEmptyTable" : "No Questions",
             "sInfo" : "Showing _START_ to  _END_ of _TOTAL_ Questions",
             "sSearch" : "Search"
-        }
+        },
+        "columnDefs" : [
+            {'targets' : [1, 2, 6], 'orderable' : false}
+        ]
     });
 });
 </script>

@@ -1,6 +1,7 @@
 package com.smu.forum.controller;
 
 import com.smu.forum.domain.Answer;
+import com.smu.forum.domain.Property;
 import com.smu.forum.domain.Question;
 import com.smu.forum.service.AnswerService;
 import com.smu.forum.service.QuestionService;
@@ -25,6 +26,9 @@ public class QuestionDetailController {
     @Autowired
     private AnswerService answerService;
 
+    @Autowired
+    private Property property;
+
     @RequestMapping("/question_detail/{id}")
     public String register(@PathVariable(value = "id") String id, Model model) {
         List<Map<String, Object>> answers = answerService.getAnswers(Integer.parseInt(id));
@@ -44,7 +48,7 @@ public class QuestionDetailController {
 
         Answer answer = new Answer();
         answer.setQuestionId(questionId);
-        answer.setAnswererId(1);//TODO
+        answer.setAnswererId(property.getId());
         answer.setDescription(description);
         answer.setAnswerTime(dateFormat.format(date));
         answerService.addAnswer(answer);

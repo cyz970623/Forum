@@ -37,16 +37,20 @@ Description：<span th:text="${question.description}"></span><br/>
     </tr>
     </tbody>
 </table>
-<script type="text/javascript">
+<script type="text/javascript" th:inline="none">
 $(document).ready(function(){
     $("#answers").DataTable({
+        "order": [[0, "desc"]],
         "aLengthMenu" : [5, 10, 15],
         "oLanguage": {
             "sZeroRecords" : "No Results",
             "sEmptyTable" : "No Answers",
             "sInfo" : "Showing _START_ to  _END_ of _TOTAL_ Answers",
             "sSearch" : "Search"
-        }
+        },
+        "columnDefs" : [
+            {'targets' : [1, 2, 4], 'orderable' : false}
+        ]
     });
 });
 </script>

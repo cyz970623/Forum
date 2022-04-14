@@ -12,7 +12,7 @@ create table if not exists accounts(
 create table if not exists users(
     id int not null auto_increment primary key,
     account_id int not null,
-    email_address VARCHAR(30)
+    nickname VARCHAR(30)
 ) engine=InnoDB;
 
 create table if not exists questions(
