@@ -5,11 +5,13 @@
     <title>Register</title>
 </head>
 <body>
-Sign Up<br/>
-Username：<input type="text"><br/>
-Password：<input type="password"><br/>
-Confirm Password: <input type="password"><br/>
-Email Address: <input type="text"><br/>
-<button value="register" onclick="javascript:window.location.href='../home'">Sign Up</button>
+<button onclick="javascript:window.location.href='../home'">Back</button>
+<form th:action="@{/sign_up}" method="get">
+    Sign Up<br/>
+    Phone Number: <input type="text" th:id="username" th:name="username"><br/>
+    Password：<input type="password" th:id="password" th:name="password"><br/>
+    Confirm Password: <input type="password" ><br/>
+    <button type="submit">Sign Up</button>
+</form>
 </body>
 </html>

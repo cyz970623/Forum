@@ -5,11 +5,12 @@ drop table if exists users;
 
 create table if not exists accounts(
     id int not null auto_increment primary key,
-    user_name VARCHAR(30),
-    pass_word VARCHAR(30)
+    username VARCHAR(30),
+    password VARCHAR(30)
 ) engine=InnoDB;
 
 create table if not exists users(
+    id int not null auto_increment primary key,
     account_id int not null,
     email_address VARCHAR(30)
 ) engine=InnoDB;

@@ -5,9 +5,12 @@
     <title>Login</title>
 </head>
 <body>
-Log In to Your Account<br/>
-Username：<input type="text"><br/>
-Password：<input type="text"><br/>
-<button value="login" onclick="javascript:window.location.href='../home'">Login</button>
+<button onclick="javascript:window.location.href='../home'">Back</button>
+<form th:action="@{/sign_in}" method="get">
+    Log In to Your Account<br/>
+    Phone Number：<input type="text" th:id="username" th:name="username"><br/>
+    Password：<input type="password" th:id="password" th:name="password"><br/>
+    <button type="submit">Login</button>
+</form>
 </body>
 </html>
