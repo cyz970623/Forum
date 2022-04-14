@@ -18,12 +18,39 @@ public class QuestionService {
     }
 
     public void addQuestion(Question question) {
-        this.jdbcTemplate.update("insert into questions (creator_id, title, description, create_time) values(" +
-                question.getCreatorId() + ",'" + question.getTitle() + "','" + question.getDescription() + "','" + question.getCreateTime() +
-                "')");
+        this.jdbcTemplate.update(
+        "insert into questions (creator_id, title, description, create_time) values(" +
+            question.getCreatorId() + ",'" +
+            question.getTitle() + "','" +
+            question.getDescription() + "','" +
+            question.getCreateTime() + "')"
+        );
     }
 
     public Question getQuestion(int id) {
-        return this.jdbcTemplate.queryForObject("select * from questions where id = '" + id + "'", new BeanPropertyRowMapper<Question>(Question.class));
+        return this.jdbcTemplate.queryForObject(
+        "select * from questions where id = '" + id +
+             "'", new BeanPropertyRowMapper<Question>(Question.class));
+    }
+
+    public void updateViewCount(Question question) {
+        this.jdbcTemplate.update(
+        "update questions set view_count = " +
+            (question.getViewCount() + 1) +
+            " where id = " + question.getId());
+    }
+
+    public void updateAnswerCount(Question question) {
+        this.jdbcTemplate.update(
+        "update questions set answer_count = " +
+            (question.getAnswerCount() + 1) +
+            " where id = " + question.getId());
+    }
+
+    public void updateLikeCount(Question question) {
+        this.jdbcTemplate.update(
+        "update questions set like_count = " +
+            (question.getLikeCount() + 1) +
+            " where id = " + question.getId());
     }
 }

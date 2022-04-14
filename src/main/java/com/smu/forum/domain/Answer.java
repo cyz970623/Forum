@@ -24,8 +24,8 @@ public class Answer {
     @Column(name = "answer_time")
     private String answerTime;
 
-    @Column(name = "like_count")
-    private int likeCount;
+    @Column(name = "support_count")
+    private int supportCount;
 
     public Long getId() {
         return id;
@@ -67,11 +67,11 @@ public class Answer {
         this.answerTime = answerTime;
     }
 
-    public int getLikeCount() {
-        return likeCount;
+    public int getSupportCount() {
+        return supportCount;
     }
 
-    public void setLikeCount(int likeCount) {
-        this.likeCount = likeCount;
+    public void setSupportCount(int supportCount) {
+        this.supportCount = supportCount;
     }
 }

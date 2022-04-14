@@ -31,6 +31,6 @@ create table if not exists answers(
     answerer_id int not null,
     description text,
     answer_time date,
-    like_count int default 0
+    support_count int default 0
 ) engine=InnoDB;
 

@@ -14,25 +14,36 @@ Description：<span th:text="${question.description}"></span><br/>
 <table class="display" id="answers">
     <thead>
     <tr>
-        <th style="width: 10px;">Answerer</th>
+        <th style="width: 400px;">Time</th>
+        <th style="width: 400px;">Answerer</th>
         <th style="width: 2000px;">Description</th>
-        <th style="width: 200px;">Date</th>
+        <th style="width: 100px;">Supported</th>
+        <th style="width: 50px;"></th>
     </tr>
     </thead>
     <tbody>
     <tr th:each="answer : ${answers}">
+        <td th:text=${answer.answer_time}/>
         <td th:text=${answer.answerer_id}/>
         <td th:text=${answer.description}/>
-        <td th:text=${answer.answer_time}/>
+        <td th:text=${answer.support_count}/>
+        <td>
+            <form th:action="@{/support_answer}" method="get">
+                <input type="hidden" th:value="${question.id}" th:id="questionId" th:name="questionId"/>
+                <input type="hidden" th:value="${answer.id}" th:id="answerId" th:name="answerId"/>
+                <button type="submit" >Support</button>
+            </form>
+        </td>
     </tr>
     </tbody>
 </table>
 <script type="text/javascript">
 $(document).ready(function(){
     $("#answers").DataTable({
+        "aLengthMenu" : [5, 10, 15],
         "oLanguage": {
-            "sZeroRecords" : "No Answers",
-            "sInfoEmpty" : " ",
+            "sZeroRecords" : "No Results",
+            "sEmptyTable" : "No Answers",
             "sInfo" : "Showing _START_ to  _END_ of _TOTAL_ Answers",
             "sSearch" : "Search"
         }

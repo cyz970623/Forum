@@ -28,7 +28,7 @@ public class CreateQuestionController {
             @RequestParam(name="title", required = false) String title,
             @RequestParam(name="description", required = false) String description) {
         Date date = new Date();
-        SimpleDateFormat dateFormat = new SimpleDateFormat("YYYY-MM-dd");
+        SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
 
         Question question = new Question();
         question.setCreatorId(1);//TODO

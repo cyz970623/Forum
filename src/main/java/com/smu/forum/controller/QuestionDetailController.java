@@ -29,6 +29,7 @@ public class QuestionDetailController {
     public String register(@PathVariable(value = "id") String id, Model model) {
         List<Map<String, Object>> answers = answerService.getAnswers(Integer.parseInt(id));
         Question question = questionService.getQuestion(Integer.parseInt(id));
+        questionService.updateViewCount(question);
         model.addAttribute("answers", answers);
         model.addAttribute("question", question);
         return "question_detail";
@@ -39,7 +40,7 @@ public class QuestionDetailController {
             @RequestParam(name="questionId", required = false) int questionId,
             @RequestParam(name="description", required = false) String description) {
         Date date = new Date();
-        SimpleDateFormat dateFormat = new SimpleDateFormat("YYYY-MM-dd");
+        SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
 
         Answer answer = new Answer();
         answer.setQuestionId(questionId);
@@ -47,6 +48,18 @@ public class QuestionDetailController {
         answer.setDescription(description);
         answer.setAnswerTime(dateFormat.format(date));
         answerService.addAnswer(answer);
+
+        Question question = questionService.getQuestion(questionId);
+        questionService.updateAnswerCount(question);
+        return "redirect:question_detail/" + questionId;
+    }
+
+    @GetMapping("/support_answer")
+    public String support(
+            @RequestParam(name="answerId", required = false) int answerId,
+            @RequestParam(name="questionId", required = false) int questionId) {
+        Answer answer = answerService.getAnswer(answerId);
+        answerService.updateSupportCount(answer);
         return "redirect:question_detail/" + questionId;
     }
 }
