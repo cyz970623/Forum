@@ -24,7 +24,7 @@ Description：<span th:text="${question.description}"></span><br/>
     <tbody>
     <tr th:each="answer : ${answers}">
         <td th:text=${answer.answer_time}/>
-        <td th:text=${answer.answerer_id}/>
+        <td th:text=${answer.nickname}/>
         <td th:text=${answer.description}/>
         <td th:text=${answer.support_count}/>
         <td>

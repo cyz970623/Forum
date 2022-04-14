@@ -32,6 +32,12 @@ public class AnswerService {
             id + " order by id desc");
     }
 
+    public List<Map<String, Object>> getAnswersWithNickname(int id) {
+        return this.jdbcTemplate.queryForList(
+        "select * from answers left join users on answers.answerer_id = users.account_id where question_id = " +
+            id + " order by answers.id desc");
+    }
+
     public Answer getAnswer(int id) {
         return this.jdbcTemplate.queryForObject(
         "select * from answers where id = '" + id + "'",

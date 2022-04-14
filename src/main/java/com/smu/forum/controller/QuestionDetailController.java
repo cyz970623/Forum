@@ -3,8 +3,10 @@ package com.smu.forum.controller;
 import com.smu.forum.domain.Answer;
 import com.smu.forum.domain.Property;
 import com.smu.forum.domain.Question;
+import com.smu.forum.domain.User;
 import com.smu.forum.service.AnswerService;
 import com.smu.forum.service.QuestionService;
+import com.smu.forum.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -27,11 +29,14 @@ public class QuestionDetailController {
     private AnswerService answerService;
 
     @Autowired
+    private UserService userService;
+
+    @Autowired
     private Property property;
 
     @RequestMapping("/question_detail/{id}")
-    public String register(@PathVariable(value = "id") String id, Model model) {
-        List<Map<String, Object>> answers = answerService.getAnswers(Integer.parseInt(id));
+    public String detail(@PathVariable(value = "id") String id, Model model) {
+        List<Map<String, Object>> answers = answerService.getAnswersWithNickname(Integer.parseInt(id));
         Question question = questionService.getQuestion(Integer.parseInt(id));
         questionService.updateViewCount(question);
         model.addAttribute("answers", answers);
