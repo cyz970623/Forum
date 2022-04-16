@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Profile</title>
+</head>
+<body>
+<button onclick="javascript:window.location.href='../home'">Back</button><br/>
+<span th:text="${user.nickname}"/>
+<form th:action="@{/change_nickname}" method="get">
+    Change your nickname：<input type="text" th:id="nickname" th:name="nickname">
+    <button type="submit">Change</button>
+</form>
+</body>
+</html>
