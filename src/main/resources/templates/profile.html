@@ -6,10 +6,19 @@
 </head>
 <body>
 <button onclick="javascript:window.location.href='../home'">Back</button><br/>
+
+<img th:src="@{${url}}" width="100" height="100">
+<form action="upload_profile" method="post" enctype="multipart/form-data">
+    <input type="file" name="file">
+    <input type="submit" value="Upload">
+</form>
+
 <span th:text="${user.nickname}"/>
 <form th:action="@{/change_nickname}" method="get">
     Change your nickname：<input type="text" th:id="nickname" th:name="nickname">
     <button type="submit">Change</button>
 </form>
+
+
 </body>
 </html>

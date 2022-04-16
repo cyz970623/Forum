@@ -18,6 +18,9 @@ public class User {
     @Column(name = "nickname")
     private String nickname;
 
+    @Column(name = "url")
+    private String url;
+
     public Long getId() {
         return id;
     }
@@ -40,5 +43,13 @@ public class User {
 
     public void setNickname(String nickname) {
         this.nickname = nickname;
+    }
+
+    public String getUrl() {
+        return url;
+    }
+
+    public void setUrl(String url) {
+        this.url = url;
     }
 }

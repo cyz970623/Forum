@@ -33,4 +33,16 @@ public class UserService {
         "update users set nickname = '" +
             nickname + "' where account_id = " + user.getAccountId());
     }
+
+    public void updateProfilePhotoUrl(User user, String url) {
+        this.jdbcTemplate.update(
+        "update users set url = '" +
+            url + "' where account_id = " + user.getAccountId());
+    }
+
+    public String getProfileUrl(int accountId) {
+        return this.jdbcTemplate.queryForObject(
+        "select * from users where account_id = " + accountId,
+            new BeanPropertyRowMapper<User>(User.class)).getUrl();
+    }
 }
