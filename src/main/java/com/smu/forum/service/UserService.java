@@ -1,6 +1,7 @@
 package com.smu.forum.service;
 
 import com.smu.forum.domain.Account;
+import com.smu.forum.domain.Answer;
 import com.smu.forum.domain.User;
 import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.jdbc.core.JdbcTemplate;
@@ -25,5 +26,11 @@ public class UserService {
             "insert into users (account_id, nickname) values(" +
             user.getAccountId() + ",'" +
             user.getNickname() + "')");
+    }
+
+    public void updateNickname(User user, String nickname) {
+        this.jdbcTemplate.update(
+        "update users set nickname = '" +
+            nickname + "' where account_id = " + user.getAccountId());
     }
 }
