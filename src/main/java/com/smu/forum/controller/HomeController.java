@@ -33,7 +33,7 @@ public class HomeController {
     @Autowired
     private Property property;
 
-    @RequestMapping("/home")
+    @RequestMapping("/")
     public String home(Model model) {
         List<Map<String, Object>> questions = homeService.getQuestions();
         model.addAttribute("questions", questions);
@@ -45,13 +45,13 @@ public class HomeController {
     @RequestMapping("/sign_out")
     public String signOut(Model model) {
         property.setId(0);
-        return "redirect:home";
+        return "redirect:/";
     }
 
     @GetMapping("/like_question")
     public String like(@RequestParam(name="questionId", required = false) int questionId) {
         Question question = questionService.getQuestion(questionId);
         questionService.updateLikeCount(question);
-        return "redirect:home";
+        return "redirect:/";
     }
 }

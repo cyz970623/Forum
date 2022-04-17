@@ -32,7 +32,7 @@ public class LoginController {
         account = accountService.getAccount(username);
         if (account.getPassword().equals(password)) {
             property.setId(Math.toIntExact(account.getId()));
-            return "redirect:home";
+            return "redirect:/";
         } else {
             return "login";
         }

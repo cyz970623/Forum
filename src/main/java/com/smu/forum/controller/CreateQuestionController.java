@@ -40,6 +40,6 @@ public class CreateQuestionController {
         question.setDescription(description);
         question.setCreateTime(dateFormat.format(date));
         questionService.addQuestion(question);
-        return "redirect:home";
+        return "redirect:/";
     }
 }
