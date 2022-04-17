@@ -1,16 +1,110 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
-    <meta charset="UTF-8">
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <title>Login</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        html {
+            height: 100%;
+            width: 100%;
+            overflow: hidden;
+            margin: 0;
+            padding: 0;
+            background: url(background.jpeg) no-repeat 0px 0px;
+            background-repeat: no-repeat;
+            background-size: 100% 100%;
+            -moz-background-size: 100% 100%;
+        }
+
+        body {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100%;
+        }a
+
+        #loginDiv {
+            width: 37%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 300px;
+            background-color: rgba(75, 81, 95, 0.3);
+            box-shadow: 7px 7px 17px rgba(52, 56, 66, 0.5);
+            border-radius: 5px;
+        }
+
+        #name_trip {
+            margin-left: 50px;
+            color: red;
+        }
+
+        p {
+            margin-top: 30px;
+            margin-left: 20px;
+            color: azure;
+        }
+
+        input {
+            margin-left: 15px;
+            border-radius: 5px;
+            border-style: hidden;
+            height: 30px;
+            width: 140px;
+            background-color: rgba(216, 191, 216, 0.5);
+            outline: none;
+            color: #f0edf3;
+            padding-left: 10px;
+        }
+
+        .button {
+            margin-left: 15px;
+            margin-right: 15px;
+            border-color: cornsilk;
+            background-color: rgba(100, 149, 237, .7);
+            color: aliceblue;
+            border-style: hidden;
+            border-radius: 5px;
+            width: 100px;
+            height: 31px;
+            font-size: 16px;
+        }
+
+        .topcorner{
+            position:absolute;
+            top:10px;
+            left:10px;
+            border-color: cornsilk;
+            background-color: rgba(100, 149, 237, .7);
+            color: aliceblue;
+            border-style: hidden;
+            border-radius: 5px;
+            width: 100px;
+            height: 31px;
+            font-size: 16px;
+        }
+    </style>
 </head>
+
 <body>
-<button onclick="javascript:window.location.href='../home'">Back</button>
-<form th:action="@{/sign_in}" method="get">
-    Log In to Your Account<br/>
-    Phone Number：<input type="text" th:id="username" th:name="username"><br/>
-    Password：<input type="password" th:id="password" th:name="password"><br/>
-    <button type="submit">Login</button>
-</form>
+<div id="loginDiv">
+    <button onclick="javascript:window.location.href='../home'" class="topcorner">Back</button>
+
+    <form th:action="@{/sign_in}" method="get">
+        <h1 style="text-align: center; color: aliceblue;">Log In</h1>
+        <p>Phone Number：<input type="text" th:id="username" th:name="username"><label id="name_trip"></label></p>
+        <p>Password：<input type="password" th:id="password" th:name="password"><label id="password_trip"></label></p>
+
+        <div style="text-align: center; margin-top: 30px;">
+            <button type="submit" class="button">Login</button>
+            <button type="reset" class="button">Reset</button>
+        </div>
+    </form>
+</div>
 </body>
 </html>
