@@ -6,11 +6,76 @@
     <link rel="stylesheet" type="text/css" href="http://cdn.datatables.net/1.10.15/css/jquery.dataTables.css">
     <script type="text/javascript" charset="utf8" src="http://code.jquery.com/jquery-1.10.2.min.js"></script>
     <script type="text/javascript" charset="utf8" src="http://cdn.datatables.net/1.10.15/js/jquery.dataTables.js"></script>
+    <style>
+
+        input {
+            margin-left: 15px;
+            border-radius: 5px;
+            border-style: hidden;
+            height: 30px;
+            width: 140px;
+            background-color: rgba(216, 191, 216, 0.5);
+            outline: none;
+            color: #f0edf3;
+            padding-left: 10px;
+        }
+
+        .answer {
+            margin-left: 15px;
+            border-radius: 5px;
+            border-style: hidden;
+            height: 30px;
+            width: 300px;
+            background-color: rgba(216, 191, 216, 0.5);
+            outline: none;
+            color: #f0edf3;
+            padding-left: 10px;
+        }
+
+        .button {
+            margin-top: 15px
+            margin-left: 15px;
+            margin-right: 15px;
+            border-color: cornsilk;
+            background-color: rgba(100, 149, 237, .7);
+            color: aliceblue;
+            border-style: hidden;
+            border-radius: 5px;
+            width: 100px;
+            height: 31px;
+            font-size: 16px;
+        }
+
+        .create {
+            border-color: cornsilk;
+            background-color: rgba(100, 149, 237, .7);
+            color: aliceblue;
+            border-style: hidden;
+            border-radius: 5px;
+            width: 200px;
+            height: 30px;
+            font-size: 16px;
+        }
+
+        .topcorner{
+            position:absolute;
+            top:10px;
+            left:10px;
+            border-color: cornsilk;
+            background-color: rgba(100, 149, 237, .7);
+            color: aliceblue;
+            border-style: hidden;
+            border-radius: 5px;
+            width: 100px;
+            height: 31px;
+            font-size: 16px;
+        }
+    </style>
 </head>
 <body>
-<button value="back_to_home" onclick="javascript:window.location.href='../home'">Back</button><br/>
-Title：<span th:text="${question.title}"></span><br/>
-Description：<span th:text="${question.description}"></span><br/>
+<button value="back_to_home" onclick="javascript:window.location.href='../home'" class="button">Back</button><br/>
+<p>Title：<span th:text="${question.title}"></span><br/><p>
+<p>Description：<span th:text="${question.description}"></span><br/><p>
 <table class="display" id="answers">
     <thead>
     <tr>
@@ -31,7 +96,7 @@ Description：<span th:text="${question.description}"></span><br/>
             <form th:action="@{/support_answer}" method="get">
                 <input type="hidden" th:value="${question.id}" th:id="questionId" th:name="questionId"/>
                 <input type="hidden" th:value="${answer.id}" th:id="answerId" th:name="answerId"/>
-                <button type="submit" >Support</button>
+                <button type="submit" class="button">Support</button>
             </form>
         </td>
     </tr>
@@ -55,9 +120,9 @@ $(document).ready(function(){
 });
 </script>
 <form th:action="@{/submit_answer}" method="get">
-    Answer：<input type="text" th:id="description" th:name="description">
+    Answer：<input type="text" th:id="description" th:name="description" class="answer">
     <input type="hidden" th:value="${question.id}" th:id="questionId" th:name="questionId"/>
-    <button type="submit" >Answer</button>
+    <button type="submit" class="button">Answer</button>
 </form>
 </body>
 </html>
