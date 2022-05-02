@@ -1,0 +1,134 @@
+<!DOCTYPE HTML>
+<html xmlns:th="https://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Home</title>
+    <link rel="stylesheet" type="text/css" href="http://cdn.datatables.net/1.10.15/css/jquery.dataTables.css">
+    <script type="text/javascript" charset="utf8" src="http://code.jquery.com/jquery-1.10.2.min.js"></script>
+    <script type="text/javascript" charset="utf8" src="http://cdn.datatables.net/1.10.15/js/jquery.dataTables.js"></script>
+    <style>
+        html {
+            height: 100%;
+            width: 100%;
+            overflow: hidden;
+            margin: 0;
+            padding: 0;
+            background: url(background.jpeg) no-repeat 0px 0px;
+            background-repeat: no-repeat;
+            background-size: 100% 100%;
+            -moz-background-size: 100% 100%;
+        }
+
+        input {
+            margin-left: 15px;
+            border-radius: 5px;
+            border-style: hidden;
+            height: 30px;
+            width: 140px;
+            background-color: rgba(216, 191, 216, 0.5);
+            outline: none;
+            color: #f0edf3;
+            padding-left: 10px;
+        }
+
+        .button {
+            margin-left: 5px;
+            margin-right: 5px;
+            border-color: cornsilk;
+            background-color: rgba(100, 149, 237, .7);
+            color: aliceblue;
+            border-style: hidden;
+            border-radius: 5px;
+            width: 100px;
+            height: 31px;
+            font-size: 16px;
+        }
+
+        .create {
+            border-color: cornsilk;
+            background-color: rgba(100, 149, 237, .7);
+            color: aliceblue;
+            border-style: hidden;
+            border-radius: 5px;
+            width: 200px;
+            height: 30px;
+            font-size: 16px;
+        }
+
+        .topcorner{
+            position:absolute;
+            top:10px;
+            left:10px;
+            border-color: cornsilk;
+            background-color: rgba(100, 149, 237, .7);
+            color: aliceblue;
+            border-style: hidden;
+            border-radius: 5px;
+            width: 100px;
+            height: 31px;
+            font-size: 16px;
+        }
+    </style>
+</head>
+<body>
+<h1 style="text-align: center; color: aliceblue;">Welcome to Know-or-Not, <span th:text="${user.nickname}"/></h1>
+<div style="float:right">
+<p th:if="${user.accountId} == 0">
+    <button onclick="javascript:window.location.href='../login'" class="button">Sign In</button>
+    <button onclick="javascript:window.location.href='../register'" class="button">Sign Up</button>
+</p>
+<p th:if="${user.accountId} != 0">
+    <button onclick="javascript:window.location.href='../sign_out'" class="button">Sign Out</button>
+    <button onclick="javascript:window.location.href='../profile'" class="button">Profile</button>
+</p>
+</div>
+
+<table class="display" id="questions">
+        <thead>
+        <tr>
+            <th style="width: 400px;">Time</th>
+            <th style="width: 400px;">Title</th>
+            <th style="width: 2000px;">Description</th>
+            <th style="width: 200px;">Answered</th>
+            <th style="width: 100px;">Viewed</th>
+            <th style="width: 100px;">Liked</th>
+            <th style="width: 50px;"></th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="question : ${questions}">
+            <td th:text=${question.create_time}/>
+            <td th:text=${question.title}/>
+            <td><a th:href="@{'/question_detail/'+ ${question.id}}" th:text=${question.description}></a></td>
+            <td th:text=${question.answer_count}/>
+            <td th:text=${question.view_count}/>
+            <td th:text=${question.like_count}/>
+            <td>
+            <form th:action="@{/like_question}" method="get">
+                <input type="hidden" th:value="${question.id}" th:id="questionId" th:name="questionId"/>
+                <button type="submit" class="button">Like</button>
+            </form>
+            </td>
+        </tr>
+        </tbody>
+</table>
+<script type="text/javascript" th:inline="none">
+$(document).ready(function(){
+    $("#questions").DataTable({
+        "order" : [[0, "desc"]],
+        "aLengthMenu" : [5, 10, 15],
+        "oLanguage": {
+            "sZeroRecords" : "No Results",
+            "sEmptyTable" : "No Questions",
+            "sInfo" : "Showing _START_ to  _END_ of _TOTAL_ Questions",
+            "sSearch" : "Search"
+        },
+        "columnDefs" : [
+            {'targets' : [1, 2, 6], 'orderable' : false}
+        ]
+    });
+});
+</script>
+<button value="create_question" onclick="javascript:window.location.href='../create_question'" class="create">Create Question</button><br/>
+</body>
+</html>

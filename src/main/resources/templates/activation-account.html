@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Activation Email</title>
+</head>
+<body>
+    <div>
+        Email verification<br>
+        This email is sent by cloud project team.<br>
+        ------------------------<br>
+        Activation instruction<br>
+        ------------------------<br>
+        Please click the link below:<br>
+        <a th:href="@{${activationUrl}}"><span th:text="${activationUrl}"></span></a>
+        Thanks for your visiting!<br>
+
+        Best,<br>
+        Cloud Project Team<br>
+    </div>
+</body>
+</html>

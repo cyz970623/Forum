@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html xmlns:th="https://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Question Detail</title>
+    <link rel="stylesheet" type="text/css" href="http://cdn.datatables.net/1.10.15/css/jquery.dataTables.css">
+    <script type="text/javascript" charset="utf8" src="http://code.jquery.com/jquery-1.10.2.min.js"></script>
+    <script type="text/javascript" charset="utf8" src="http://cdn.datatables.net/1.10.15/js/jquery.dataTables.js"></script>
+    <style>
+
+        input {
+            margin-left: 15px;
+            border-radius: 5px;
+            border-style: hidden;
+            height: 30px;
+            width: 140px;
+            background-color: rgba(216, 191, 216, 0.5);
+            outline: none;
+            color: #f0edf3;
+            padding-left: 10px;
+        }
+
+        .answer {
+            margin-left: 15px;
+            border-radius: 5px;
+            border-style: hidden;
+            height: 30px;
+            width: 300px;
+            background-color: rgba(216, 191, 216, 0.5);
+            outline: none;
+            color: #f0edf3;
+            padding-left: 10px;
+        }
+
+        .button {
+            margin-top: 15px
+            margin-left: 15px;
+            margin-right: 15px;
+            border-color: cornsilk;
+            background-color: rgba(100, 149, 237, .7);
+            color: aliceblue;
+            border-style: hidden;
+            border-radius: 5px;
+            width: 100px;
+            height: 31px;
+            font-size: 16px;
+        }
+
+        .create {
+            border-color: cornsilk;
+            background-color: rgba(100, 149, 237, .7);
+            color: aliceblue;
+            border-style: hidden;
+            border-radius: 5px;
+            width: 200px;
+            height: 30px;
+            font-size: 16px;
+        }
+
+        .topcorner{
+            position:absolute;
+            top:10px;
+            left:10px;
+            border-color: cornsilk;
+            background-color: rgba(100, 149, 237, .7);
+            color: aliceblue;
+            border-style: hidden;
+            border-radius: 5px;
+            width: 100px;
+            height: 31px;
+            font-size: 16px;
+        }
+    </style>
+</head>
+<body>
+<button value="back_to_home" onclick="javascript:window.location.href='../home'" class="button">Back</button><br/>
+<p>Title：<span th:text="${question.title}"></span><br/><p>
+<p>Description：<span th:text="${question.description}"></span><br/><p>
+<table class="display" id="answers">
+    <thead>
+    <tr>
+        <th style="width: 400px;">Time</th>
+        <th style="width: 400px;">Answerer</th>
+        <th style="width: 2000px;">Description</th>
+        <th style="width: 100px;">Supported</th>
+        <th style="width: 50px;"></th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="answer : ${answers}">
+        <td th:text=${answer.answer_time}/>
+        <td th:text=${answer.nickname}/>
+        <td th:text=${answer.description}/>
+        <td th:text=${answer.support_count}/>
+        <td>
+            <form th:action="@{/support_answer}" method="get">
+                <input type="hidden" th:value="${question.id}" th:id="questionId" th:name="questionId"/>
+                <input type="hidden" th:value="${answer.id}" th:id="answerId" th:name="answerId"/>
+                <button type="submit" class="button">Support</button>
+            </form>
+        </td>
+    </tr>
+    </tbody>
+</table>
+<script type="text/javascript" th:inline="none">
+$(document).ready(function(){
+    $("#answers").DataTable({
+        "order": [[0, "desc"]],
+        "aLengthMenu" : [5, 10, 15],
+        "oLanguage": {
+            "sZeroRecords" : "No Results",
+            "sEmptyTable" : "No Answers",
+            "sInfo" : "Showing _START_ to  _END_ of _TOTAL_ Answers",
+            "sSearch" : "Search"
+        },
+        "columnDefs" : [
+            {'targets' : [1, 2, 4], 'orderable' : false}
+        ]
+    });
+});
+</script>
+<form th:action="@{/submit_answer}" method="get">
+    Answer：<input type="text" th:id="description" th:name="description" class="answer">
+    <input type="hidden" th:value="${question.id}" th:id="questionId" th:name="questionId"/>
+    <button type="submit" class="button">Answer</button>
+</form>
+</body>
+</html>

@@ -1,0 +1,1 @@
+--insert into users (account_id, nickname) values (0, 'Guest');

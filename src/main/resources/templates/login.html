@@ -1,0 +1,269 @@
+<!--<!DOCTYPE html>-->
+<!--<html xmlns:th="http://www.thymeleaf.org">-->
+<!--<head>-->
+<!--    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">-->
+<!--    <title>Login</title>-->
+<!--    <style>-->
+<!--        * {-->
+<!--            margin: 0;-->
+<!--            padding: 0;-->
+<!--        }-->
+
+<!--        html {-->
+<!--            height: 100%;-->
+<!--            width: 100%;-->
+<!--            overflow: hidden;-->
+<!--            margin: 0;-->
+<!--            padding: 0;-->
+<!--            background: url(background.jpeg) no-repeat 0px 0px;-->
+<!--            background-repeat: no-repeat;-->
+<!--            background-size: 100% 100%;-->
+<!--            -moz-background-size: 100% 100%;-->
+<!--        }-->
+
+<!--        body {-->
+<!--            display: flex;-->
+<!--            align-items: center;-->
+<!--            justify-content: center;-->
+<!--            height: 100%;-->
+<!--        }a-->
+
+<!--        #loginDiv {-->
+<!--            width: 37%;-->
+<!--            display: flex;-->
+<!--            justify-content: center;-->
+<!--            align-items: center;-->
+<!--            height: 300px;-->
+<!--            background-color: rgba(75, 81, 95, 0.3);-->
+<!--            box-shadow: 7px 7px 17px rgba(52, 56, 66, 0.5);-->
+<!--            border-radius: 5px;-->
+<!--        }-->
+
+<!--        #name_trip {-->
+<!--            margin-left: 50px;-->
+<!--            color: red;-->
+<!--        }-->
+
+<!--        p {-->
+<!--            margin-top: 30px;-->
+<!--            margin-left: 20px;-->
+<!--            color: azure;-->
+<!--        }-->
+
+<!--        input {-->
+<!--            margin-left: 15px;-->
+<!--            border-radius: 5px;-->
+<!--            border-style: hidden;-->
+<!--            height: 30px;-->
+<!--            width: 140px;-->
+<!--            background-color: rgba(216, 191, 216, 0.5);-->
+<!--            outline: none;-->
+<!--            color: #f0edf3;-->
+<!--            padding-left: 10px;-->
+<!--        }-->
+
+<!--        .button {-->
+<!--            margin-left: 15px;-->
+<!--            margin-right: 15px;-->
+<!--            border-color: cornsilk;-->
+<!--            background-color: rgba(100, 149, 237, .7);-->
+<!--            color: aliceblue;-->
+<!--            border-style: hidden;-->
+<!--            border-radius: 5px;-->
+<!--            width: 100px;-->
+<!--            height: 31px;-->
+<!--            font-size: 16px;-->
+<!--        }-->
+
+<!--        .topcorner{-->
+<!--            position:absolute;-->
+<!--            top:10px;-->
+<!--            left:10px;-->
+<!--            border-color: cornsilk;-->
+<!--            background-color: rgba(100, 149, 237, .7);-->
+<!--            color: aliceblue;-->
+<!--            border-style: hidden;-->
+<!--            border-radius: 5px;-->
+<!--            width: 100px;-->
+<!--            height: 31px;-->
+<!--            font-size: 16px;-->
+<!--        }-->
+<!--    </style>-->
+<!--</head>-->
+
+<!--<body>-->
+<!--<div id="loginDiv">-->
+<!--    <button onclick="javascript:window.location.href='../home'" class="topcorner">Back</button>-->
+
+<!--    <form th:action="@{/sign_in}" method="get">-->
+<!--        <h1 style="text-align: center; color: aliceblue;">Log In</h1>-->
+<!--        <p>Phone Number：<input type="text" th:id="username" th:name="username"><label id="name_trip"></label></p>-->
+<!--        <p>Password：<input type="password" th:id="password" th:name="password"><label id="password_trip"></label></p>-->
+
+<!--        <div style="text-align: center; margin-top: 30px;">-->
+<!--            <button type="submit" class="button">Login</button>-->
+<!--            <button type="reset" class="button">Reset</button>-->
+<!--        </div>-->
+<!--    </form>-->
+<!--</div>-->
+<!--</body>-->
+<!--</html>-->
+<!DOCTYPE html>
+<html>
+<head>
+    <!-- Standard Meta -->
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+
+    <!-- Site Properties -->
+    <title>Login</title>
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/semantic-ui@2.4.2/dist/components/reset.css">
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/semantic-ui@2.4.2/dist/components/site.css">
+
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/semantic-ui@2.4.2/dist/components/container.css">
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/semantic-ui@2.4.2/dist/components/grid.css">
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/semantic-ui@2.4.2/dist/components/header.css">
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/semantic-ui@2.4.2/dist/components/image.css">
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/semantic-ui@2.4.2/dist/components/menu.css">
+
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/semantic-ui@2.4.2/dist/components/divider.css">
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/semantic-ui@2.4.2/dist/components/segment.css">
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/semantic-ui@2.4.2/dist/components/form.css">
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/semantic-ui@2.4.2/dist/components/input.css">
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/semantic-ui@2.4.2/dist/components/button.css">
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/semantic-ui@2.4.2/dist/components/list.css">
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/semantic-ui@2.4.2/dist/components/message.css">
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/semantic-ui@2.4.2/dist/components/icon.css">
+
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/semantic-ui@2.4.2/dist/components/form.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/semantic-ui@2.4.2/dist/components/transition.js"></script>
+
+    <style type="text/css">
+        /*html {*/
+        /*    height: 100%;*/
+        /*    width: 100%;*/
+        /*    overflow: hidden;*/
+        /*    margin: 0;*/
+        /*    padding: 0;*/
+        /*    background: url(background.jpeg) no-repeat 0px 0px;*/
+        /*    background-repeat: no-repeat;*/
+        /*    background-size: 100% 100%;*/
+        /*    -moz-background-size: 100% 100%;*/
+        /*}*/
+        body {
+            background-color: #DADADA;
+        }
+        body > .grid {
+            height: 100%;
+        }
+        .image {
+            margin-top: -100px;
+        }
+        .column {
+            max-width: 450px;
+        }
+    </style>
+    <script>
+        $(document)
+            .ready(function() {
+                $('.ui.form')
+                    .form({
+                        fields: {
+                            email: {
+                                identifier  : 'email',
+                                rules: [
+                                    {
+                                        type   : 'empty',
+                                        prompt : 'Please enter your e-mail'
+                                    },
+                                    {
+                                        type   : 'email',
+                                        prompt : 'Please enter a valid e-mail'
+                                    }
+                                ]
+                            },
+                            password: {
+                                identifier  : 'password',
+                                rules: [
+                                    {
+                                        type   : 'empty',
+                                        prompt : 'Please enter your password'
+                                    },
+                                    {
+                                        type   : 'length[6]',
+                                        prompt : 'Your password must be at least 6 characters'
+                                    }
+                                ]
+                            }
+                        }
+                    })
+                ;
+            })
+        ;
+    </script>
+</head>
+<body>
+
+<div class="ui middle aligned center aligned grid">
+    <div class="column">
+        <h2 class="ui teal image header">
+            <img src="https://www.smu.edu/-/media/9DA950A6C7EA458ABEA6136BD3E598E9.png" class="image">
+            <div class="content">
+                Log-in to your account
+            </div>
+        </h2>
+        <form class="ui large form" onsubmit="return false;">
+            <div class="ui stacked segment">
+                <div class="field">
+                    <div class="ui left icon input">
+                        <i class="user icon"></i>
+                        <input type="text" name="email" id="email" placeholder="E-mail address">
+                    </div>
+                </div>
+                <div class="field">
+                    <div class="ui left icon input">
+                        <i class="lock icon"></i>
+                        <input type="password" name="password" id="password" placeholder="Password">
+                    </div>
+                </div>
+                <div class="ui fluid large teal submit button" id = "login">Login</div>
+            </div>
+
+            <div class="ui error message"></div>
+
+        </form>
+
+        <div class="ui message">
+            New to us? <a href="/register">Sign Up</a>
+        </div>
+    </div>
+</div>
+<script type="text/javascript" charset="UTF-8">
+    //login
+    $("#login").on("click", function(){
+        $.ajax({
+            url: "/user/login",
+            type: "POST",
+            data: {
+                email: $("#email").val(),
+                password: $("#password").val()
+            },
+            resultType: "JSON",
+            success: function (result){
+                alert(result.message);
+                if(200 == result.code){
+                    window.location.href = "https://forum-a5zcgcw6cq-uc.a.run.app/create_question";
+                }
+            },
+            error: function (result){
+
+            }
+        });
+    });
+</script>
+
+</body>
+
+</html>
